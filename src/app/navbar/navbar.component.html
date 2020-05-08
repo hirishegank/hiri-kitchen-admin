@@ -1,0 +1,71 @@
+
+<div *ngIf="!user" style="margin-top: 150px;text-align: center;">
+    <h5 style="font-family:Product Sans;font-weight: bolder;">Welcome To Hiri's Kitchen Admin</h5>
+    <hr>
+    <br>
+    <img src="../../assets/logo.png"><br>
+    <hr>
+</div>
+
+
+  <div class="container-fluid" *ngIf="user">
+    <div class="row">
+      <nav class="d-none d-md-block bg-light sidebar">
+        <div class="sidebar-sticky" style="background-color: #22B573;color: white;padding-top: 80px;border-radius: 10px;">
+           
+            <div  style="padding-left: 30;margin-left: 40px;"> <img src="../../assets/avatar.png" style="border: 5px solid white; border-radius: 100%;"></div>
+        
+            <h3 class="dash" style="text-align: center;">Hirishegan</h3>  
+            <div class="row">
+                <div class="col-md-1">
+
+                </div>
+                <div class="col">
+                    <form class="form-inline">
+                        <div class="form-group">
+                          <div class="input-group">
+                            <input class="form-control" placeholder="{{date}}"
+                                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" style="width:120px;color: #22B573;">
+                            <div class="input-group-append">
+                              <button class="btn btn-light" (click)="d.toggle()" type="button" style="border-left-color: #22B573;">||</button>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                </div>
+                <div class="col">
+
+                </div>
+            </div>
+            
+          <ul class="nav flex-column">
+            <li class="nav-item dash" routerLink="overview">
+                <span data-feather="home"></span>
+                Overview <span class="sr-only">(current)</span>
+            </li>
+            <li class="nav-item dash" routerLink="Management">  
+                <span data-feather="file"></span>
+                Chef Management
+            </li>
+            <li class="nav-item dash" routerLink="Review">
+                <span data-feather="shopping-cart"></span>
+                Review Management
+            </li>
+            <li class="nav-item dash" routerLink="Reports">
+                <span data-feather="users"></span>
+                Download Reports
+            </li>
+            <li class="nav-item dash" routerLink="Forecast">
+                <span data-feather="bar-chart-2"></span>
+                Forecast
+            </li>
+            <li class="nav-item dash" routerLink="Settings">
+                <span data-feather="bar-chart-2"></span>
+                Settings
+            </li>
+            <li class="nav-item dash" style="text-align: center;">
+                <span data-feather="layers"></span>
+                <button type="button" class="btn btn-light" (click)="authService.logout()">Logout</button>
+            </li>
+          </ul>
+  </div>

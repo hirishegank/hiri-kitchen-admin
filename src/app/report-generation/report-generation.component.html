@@ -1,0 +1,238 @@
+<h5 style="margin-top: 100px;">Download Report</h5>
+
+<div class="row">
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                
+            <div class="card-image">
+                <img src="{{Img}}" style="border-radius: 20px;width: 150px;height: 150px;">
+            </div><br>
+            <h6 style="color: grey;font-weight: bolder;">{{chef.name}}</h6><br>
+            <div class="row">
+                <div class="col">
+                    <h6 style="font-weight: bold;">Address</h6>
+                </div>
+                <div class="col">
+                    <h6>{{chef.location}}</h6>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h6 style="font-weight: bold;">Phone Number</h6>
+                </div>
+                <div class="col">
+                    <h6>{{chef.phoneNo}}</h6>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <h6 style="font-weight: bold;">NIC</h6>
+                </div>
+                <div class="col">
+                    <h6>{{chef.NIC}}</h6>
+                </div>
+            </div><br>
+            <h6 style="font-weight: bold;">Order Details</h6>
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h6>Total Orders</h6>
+                        </div>
+                        <div class="col">
+                            <h6>{{Total_orders}}</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Total Orders Accepted</h6>
+                        </div>
+                        <div class="col">
+                            <h6>{{accepted_orders}}</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Total Orders Declined</h6>
+                        </div>
+                        <div class="col">
+                            <h6>{{canceled_orders}}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <h6 style="font-weight: bolder;">Your Review</h6><br>
+                <h6 style="color: grey;">{{chef.admin_review}}</h6><br>
+
+                <div class="row">
+                    <div class="col">
+                        <h6 style="font-weight: bolder;">Your Rating</h6>
+                    </div>
+                    <div class="col">
+                        <h6 style="font-weight: bolder;color: #22B573;">{{chef.admin_rating}}</h6><br>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col">
+                        <h6 style="font-weight: bold;">Total Income</h6>
+                    </div>
+                    <div class="col">
+                        <h6>Rs.{{Total_income}}.00</h6>
+                    </div>
+                </div>
+                
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <h6>Pickup</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Rs.{{pickup_income}}.00</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Door delivery</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Rs.{{door_delivery_income}}.00</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <h6>Dine in</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Rs.{{dine_in_income}}.00</h6>
+                        </div>
+                    </div>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"><button class="btn btn-success" style="background-color: #22B573;" (click)="open(content)">Generate Report</button></div>
+                <div class="col"></div>
+            </div>
+            </div>
+        </div>
+       
+    </div>
+</div>
+
+
+
+<ng-template #content  let-modal>
+    <div class="modal-body">
+     <div class="card">
+         <div class="card-body">
+             <div class="row">
+                 <div class="col">
+                     <img src="../../assets/logo.png" alt="">
+                 </div>
+                 <div class="col">
+                     <h6>Company Details</h6><br>
+                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                      Similique soluta facere consequuntur veritatis eos?
+                      Perferendis blanditiis atque repudiandae iure, officiis.
+                      
+                 </div>
+             </div>
+             <hr>
+             <h5 style="font-weight: bolder;text-align: center;">Report Type (Monthly/Year)</h5>
+             <p style="text-align: center;color: grey;">Monthly</p><br>
+             <h6 style="font-weight: bold;">{{chef.name}}</h6><br>
+
+             <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Food Name</th>
+                    <th scope="col">Ref.No</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Price</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let food of food_orders">
+                    <td>{{food.food_name}}</td>
+                    <td>{{food.id}}</td>  
+                    <td>{{food.quantity}}</td>
+                    <td>{{food.unit_price}}</td>
+                    <td>{{food.quantity * food.unit_price}}</td>
+                  </tr>
+                </tbody>
+              </table>
+              <hr>
+              <h6 style="text-align: right;">TOTAL  -  Rs.{{Total_income_month}}.00</h6><br>
+
+              
+              <div class="row">
+                  <div class="col">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h6>Total Number of Orders Recieved</h6>
+                        </div>
+                        <div class="col">
+                            <h6>{{Total_orders - 50}}</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h6>Total Number of Orders Accepted</h6>
+                        </div>
+                        <div class="col">
+                            <h6>{{accepted_orders - 50}}</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <h6>Total Number of Orders Declined</h6>
+                        </div>
+                        <div class="col">
+                            <h6>{{canceled_orders}}</h6>
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Total Income</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Rs.{{Total_income - 106000}}.00</h6>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Tax Paid</h6>
+                        </div>
+                        <div class="col">
+                            <h6>Rs.{{(Total_income -106000)/10}}.00</h6>
+                        </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                      <div class="row">
+                          <div class="col"></div>
+                          <div class="col">
+                            <img src="../../assets/qr.png">
+                          </div>
+                          <div class="col"></div>
+                      </div>
+                  </div>
+              </div>
+
+         </div>
+     </div>
+    </div>
+</ng-template>

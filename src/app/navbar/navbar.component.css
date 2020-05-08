@@ -1,0 +1,11 @@
+.dash{
+    padding: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.dash:hover{
+    text-decoration: none;
+}
+.dash:active{
+    text-decoration: none;
+}

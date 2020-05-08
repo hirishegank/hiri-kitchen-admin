@@ -1,0 +1,10 @@
+.round{
+    padding: 30px;
+    font-size: larger;
+    background-color: #22B573;
+    border-radius: 50%;
+    width:100px;
+    height: 100px;
+    color: #ffffff;
+    font-weight: bold;
+}
