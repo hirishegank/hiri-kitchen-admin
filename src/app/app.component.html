@@ -1,6 +1,15 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-2" ><navbar></navbar></div>
-    <div class="col-md-10"><router-outlet></router-outlet></div>
+<div class="container-fluid" *ngIf="user; else loginForm">
+  <div class="row no-gutters">
+    <div class="col-md-2">
+      <navbar></navbar>
+    </div>
+    <div class="col-md-10">
+      <router-outlet></router-outlet>
+    </div>
   </div>
 </div>
+
+<ng-template #loginForm>
+  <login></login>
+</ng-template>
+

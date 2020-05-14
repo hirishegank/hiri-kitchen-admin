@@ -1,8 +1,14 @@
-.wide{
-    width: 80%;
-    text-align: left;
+.wide {
+  width: 80%;
+  text-align: left;
 }
 
-.content{
-    width: 80%;
+.chart-wrapper {
+  margin: 1rem;
+  border: .1rem solid #22b576;
+  border-radius: 1rem;
+}
+
+.content {
+  width: 80%;
 }

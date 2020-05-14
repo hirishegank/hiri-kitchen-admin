@@ -1,42 +1,66 @@
-<style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
+<div class="row no-gutters">
 
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
-  <br>
-  <br>
-<body class="text-center" style="background-color: #ffffff;" *ngIf="!user">
-    
-<form class="form-signin" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
-<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-<div class="form-label-group">
-  <label for="inputEmail">Email address</label>
-  <input type="email" id="inputEmail" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email address" required autofocus> 
-  <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-      <div *ngIf="f.email.errors.required">Email is required</div>
-      <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+  <div class="col-md-7 no-gutters welcome-bg">
+    <div class="left-side d-flex justify-content-center align-items-center">
+
+      <div class="row">
+        <div class="col-12 text-center">
+          <p class="welcome-text animate__animated animate__bounce">Welcome to Hiri's Kitchen</p>
+        </div>
+        <div class="col-12">
+          <img src="../../assets/logo.png" class="logo mx-auto d-block" alt="Hiri's Kitchen Logo"><br>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="col-md-5 no-gutters">
+    <div class="right-side d-flex justify-content-center align-items-center">
+      <form class="form-signin card p-5" [formGroup]="signinForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-12 p-1">
+            <h1 class="h3 font-weight-normal">Please sign in</h1>
+            <hr>
+          </div>
+          <div class="col-12 p-1">
+            <div class="form-label-group">
+              <label for="inputEmail">Enter Email address</label>
+              <input type="email"
+                     id="inputEmail"
+                     formControlName="email"
+                     class="form-control"
+                     [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+                     placeholder="Email address"
+                     required
+                     autofocus>
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Email is required</div>
+                <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 p-1">
+            <div class="form-label-group">
+              <label for="inputPassword">Password</label>
+              <input type="password" id="inputPassword" class="form-control" formControlName="password"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" required>
+              <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                <div *ngIf="f.password.errors.required">Password is required</div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="col-12 text-center p-1">
+            <button class="btn btn-success btn-block" type="submit">Sign In</button>
+            <br>
+            <p>Don't have an account?<a href="#">Register</a></p>
+          </div>
+          <div class="col-12 text-center">
+            <p class="mt-5 mb-3 text-muted">&copy; 2017-2019 Hiri's Kitchen</p>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-<hr>
-<div class="form-label-group">
-  <label for="inputPassword">Password</label>
-  <input type="password" id="inputPassword" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" placeholder="Password" required>
-  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-      <div *ngIf="f.password.errors.required">Password is required</div>
-  </div>
-</div>
-<button class="btn btn-success btn-block" type="submit">Sign in</button>
-<p class="mt-5 mb-3 text-muted">&copy; Hiri's Kitchen 2020</p>
-</form>
-</body>

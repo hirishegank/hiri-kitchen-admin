@@ -1,50 +1,37 @@
+<div class="container pt-5">
 
-<br>
-<h4 style="font-weight: bolder;">Review Management</h4><hr>
+  <h4 class="feature-title">Review Management</h4>
+  <hr>
 
-<div class="row">
-    <div class="col" *ngFor="let chef of chefs">
-        <div class="card" style="width: 250px;border-radius: 15px;">
-            <div class="card-body">
-                <div class="row">
-                    <div class="col">
+  <div class="card-deck">
+    <div class="card" *ngFor="let chef of chefs">
+      <div class="card-body">
 
-                    </div>
-                    <div class="col">
-                        <div class="card-image">
-                            <img src="{{chef.Img}}" style="border-radius: 20px;width: 200px;height: 200px;">
-                        </div><br>
-                    </div>
-                    <div class="col">
-
-                    </div>
-                </div>
-                
-                <div class="row">
-                    <div class="col-md-2">
-
-                    </div>
-                    <div class="col-md-8" style="justify-self: center;">
-                        <div class="card-title" style="font-weight: bolder;">
-                            {{chef.name}}
-                        </div>
-                       <a [routerLink]="['reviewNlp',chef.id]"><button class="btn btn-sm btn-success" style="background-color: #22b573;" >+ Add review</button></a> 
-                        <h6>Your review </h6>
-                        <div>
-                           {{chef.admin_review}}
-                        </div><br>
-                        <h6>Your rating </h6>
-                        <ngb-rating [(rate)]="currentRate" [readonly]="true" [max]="5"></ngb-rating>
-                    <div class="col-md-2">
-
-                    </div>
-                </div>
-                
-            </div>
+        <div class="row">
+          <div class="col-3">
+            <img class="" src="{{chef.Img}}" width="72" height="72" alt="Card image cap">
+          </div>
+          <div class="col-9">
+            <h5 class="card-title text-value-lg"><b>{{chef.name}}</b></h5>
+            <h6 class="card-subtitle">Your Review</h6>
+            <h6 style="font-size: 12px; font-weight: lighter; margin-top: .22rem">{{getDate()}}</h6>
+          </div>
         </div>
+        <hr>
+        <p class="card-text">{{chef.admin_review ? chef.admin_review : "No Review Yet!"}}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <a [routerLink]="['reviewNlp',chef.id]">
+            <button class="btn btn-sm btn-success" style="background-color: #22b573;">+ Add review</button>
+          </a>
+        </li>
+      </ul>
+      <div class="card-footer">
+        <small>Your rating </small>
+        <ngb-rating [(rate)]="currentRate" [readonly]="true" [max]="5"></ngb-rating>
+      </div>
     </div>
+  </div>
 
-   
-
-    
 </div>

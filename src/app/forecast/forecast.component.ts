@@ -36,14 +36,21 @@ export class ForecastComponent implements OnInit {
       options: {
         title: {
           text: "Most Popular Chef",
-          display: true
+          display: false
         },
         scales: {
           yAxes: [{
             ticks: {
               beginAtZero: true
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Number of Orders'
             }
           }]
+        },
+        legend: {
+          display: false
         }
       }
     });
@@ -64,14 +71,21 @@ export class ForecastComponent implements OnInit {
       options: {
         title: {
           text: "Most Popular Food",
-          display: true
+          display: false
         },
         scales: {
           yAxes: [{
             ticks: {
               beginAtZero: true
+            },
+            scaleLabel: {
+              display: true,
+              labelString: 'Number of Orders'
             }
           }]
+        },
+        legend: {
+          display: false
         }
       }
     });

@@ -1,15 +1,15 @@
-import { AngularFirestore } from '@angular/fire/firestore';
-import { ManageChefServiceService } from './../manage-chef-service.service';
-import { FormBuilder,FormControl, FormGroup,Validators,AbstractControl } from '@angular/forms';
-import { NgbModal,ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ConfirmationDialogService } from '../confirmation-dialog/confirmation-daialog.service';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {ManageChefServiceService} from './../manage-chef-service.service';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ModalDismissReasons, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
+import {ConfirmationDialogService} from '../confirmation-dialog/confirmation-daialog.service';
 
 @Component({
   selector: 'app-chefmanagement',
   templateUrl: './chefmanagement.component.html',
   encapsulation: ViewEncapsulation.None,
-  styleUrls: ['./chefmanagement.component.css']
+  styleUrls: ['./chefmanagement.component.css'],
 })
 export class ChefmanagementComponent implements OnInit {
 
@@ -18,73 +18,87 @@ export class ChefmanagementComponent implements OnInit {
   closeResult: string;
   chefForm: FormGroup;
   submitted = false;
-  constructor(private modalService: NgbModal, private fb: FormBuilder,private manageChef:ManageChefServiceService,private afs: AngularFirestore,private confirmationDialogService: ConfirmationDialogService) { }
+  chef;
+
+  constructor(private modalService: NgbModal, private fb: FormBuilder, private manageChef: ManageChefServiceService, private afs: AngularFirestore, private confirmationDialogService: ConfirmationDialogService) {
+  }
+
+  get f() {
+    return this.chefForm.controls;
+  }
+
   ngOnInit() {
     this.afs.collection('chef').snapshotChanges().subscribe(res => {
+      this.chefs = [];
       res.forEach(a => {
-        let item:any = a.payload.doc.data();
+        let item: any = a.payload.doc.data();
         item.id = a.payload.doc.id;
-        this.afs.collection('orders',re=>re.where('chef_id','==',item.id)).valueChanges().subscribe(a =>{
+        this.afs.collection('orders', re => re.where('chef_id', '==', item.id)).valueChanges().subscribe(a => {
           this.b = a;
           item.orders = this.b.length + 50;
         });
-        
+
         this.chefs.push(item);
       });
     });
 
     this.chefForm = this.fb.group({
-      fname:  ['', 
-        Validators.required
-      ],
-      lname:  ['', 
+      fname: ['',
         Validators.required,
       ],
-      location:  ['', 
+      lname: ['',
         Validators.required,
       ],
-      NICNumber:  ['',
+      location: ['',
         Validators.required,
       ],
-      PhoneNumber:  ['',
+      NICNumber: ['',
+        Validators.required,
+      ],
+      PhoneNumber: ['',
         Validators.required,
       ],
     });
-
 
   }
 
   public openConfirmationDialog(id) {
     this.confirmationDialogService.confirm('Please confirm..', 'Do you really want to delete this chef... ?')
-    .then((confirmed) => this.delete(id))
-    .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
+      .then((confirmed) => this.delete(id))
+      .catch(() => console.log('User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)'));
   }
 
   delete(item) {
     this.afs.collection('chef').doc(item).delete();
   }
 
-get f() { return this.chefForm.controls; }
-
-  onSubmit(){
+  onSubmit() {
     this.submitted = true;
     // stop here if form is invalid
     if (this.chefForm.invalid) {
       this.chefForm.reset();
       return;
-    }else{
+    } else {
       let data = this.chefForm.value;
-      this.chefForm.reset();
       this.manageChef.InsertChef(data).then(res => {
         console.log('Chef inserted successfully!');
+        this.modalService.dismissAll();
+        this.chefForm.reset();
       });
     }
-  
+
   }
 
-
   open(content) {
-    this.modalService.open(content,{size: 'lg'}).result.then((result) => {
+    this.modalService.open(content, {size: 'lg'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  opendel(content) {
+    this.modalService.open(content, {centered: true}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -97,18 +111,8 @@ get f() { return this.chefForm.controls; }
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
-  }
-
-  chef;
-
-  opendel(content) {
-    this.modalService.open(content, { centered: true }).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
   }
 
 }

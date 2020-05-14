@@ -1,71 +1,97 @@
+<div class="side-nav-wrapper" *ngIf="user">
+  <div class="row">
+    <nav class="d-md-block">
+      <div class="container-fluid side-nav">
 
-<div *ngIf="!user" style="margin-top: 100px;text-align: left;">
-    <h5 style="font-family:Product Sans;font-weight: bolder; font-size: 3.3rem;">Welcome to Hiri's Kitchen Admin Portal</h5>
-    <hr>
-    <br>
-    <img style="width:fit-content;" src="../../assets/logo.png"><br>
-    <hr>
-</div>
-
-
-  <div class="container-fluid" *ngIf="user">
-    <div class="row">
-      <nav class="d-none d-md-block bg-light sidebar">
-        <div class="sidebar-sticky" style="background-color: #22B573;color: white;padding-top: 80px;border-radius: 10px;">
-           
-            <div  style="padding-left: 30;margin-left: 40px;"> <img src="../../assets/avatar.png" style="border: 5px solid white; border-radius: 100%;"></div>
-        
-            <h3 class="dash" style="text-align: center;">Hirishegan</h3>  
-            <div class="row">
-                <div class="col-md-1">
-
-                </div>
-                <div class="col">
-                    <form class="form-inline">
-                        <div class="form-group">
-                          <div class="input-group">
-                            <input class="form-control" placeholder="{{date}}"
-                                   name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" style="width:120px;color: #22B573;">
-                            <div class="input-group-append">
-                              <button class="btn btn-light" (click)="d.toggle()" type="button" style="border-left-color: #22B573;">||</button>
-                            </div>
-                          </div>
-                        </div>
-                      </form>
-                </div>
-                <div class="col">
-
-                </div>
+        <!--Name and profile picture-->
+        <div class="row align-content-center align-items-center">
+          <div class="col-12">
+            <div class="profile-avatar-wrapper text-center">
+              <img src="../../assets/mypicture.png" width="115" height="115" class="profile-avatar" alt="profile-picture">
             </div>
-            
-          <ul class="nav flex-column">
-            <li class="nav-item dash" routerLink="overview">
-                <span data-feather="home"></span>
-                Overview <span class="sr-only">(current)</span>
-            </li>
-            <li class="nav-item dash" routerLink="Management">  
-                <span data-feather="file"></span>
-                Chef Management
-            </li>
-            <li class="nav-item dash" routerLink="Review">
-                <span data-feather="shopping-cart"></span>
-                Review Management
-            </li>
-            <li class="nav-item dash" routerLink="Reports">
-                <span data-feather="users"></span>
-                Download Reports
-            </li>
-            <li class="nav-item dash" routerLink="Forecast">
-                <span data-feather="bar-chart-2"></span>
-                Forecast
-            </li>
-            <li class="nav-item dash" routerLink="Settings">
-                <span data-feather="bar-chart-2"></span>
-                Settings
-            </li>
-            <li class="nav-item dash" style="text-align: center;">
-                <span data-feather="layers"></span>
-                <button type="button" class="btn btn-light" (click)="authService.logout()">Logout</button>
-            </li>
-          </ul>
+          </div>
+          <div class="col-12">
+            <h3 class="dash" style="text-align: center;">
+              Hirishegan<br><em class="small">Admin</em>
+            </h3>
+          </div>
+        </div>
+
+        <!--Date pickers-->
+        <div class="row p-1 justify-content-center">
+          <div class="col-4">
+            <p>Start Date:</p>
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" type="hidden" placeholder="{{date}}"
+                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"
+                         style="width:120px;color: #22B573;">
+                  <div class="input-group-append">
+                    <button class="btn btn-light" (click)="d.toggle()" type="button"
+                            style="border-left-color: #22B573;">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="col-4">
+            <p>End Date:</p>
+            <form class="form-inline">
+              <div class="form-group">
+                <div class="input-group">
+                  <input class="form-control" type="hidden" placeholder="{{date}}"
+                         name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker"
+                         style="width:120px;color: #22B573;">
+                  <div class="input-group-append">
+                    <button class="btn btn-light" (click)="d.toggle()" type="button"
+                            style="border-left-color: #22B573;">
+                      <i class="fa fa-calendar" aria-hidden="true"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!--Navigation links-->
+        <div class="row">
+          <div class="col-12 nav-item dash" routerLink="overview" routerLinkActive="la">
+            <span data-feather="home"></span>
+            Business Overview <span class="sr-only">(current)</span>
+          </div>
+          <div class="col-12 nav-item dash" routerLink="Management" routerLinkActive="la">
+            <span data-feather="file"></span>
+            Chef Management
+          </div>
+          <div class="col-12 nav-item dash" routerLink="Review" routerLinkActive="la">
+            <span data-feather="shopping-cart"></span>
+            Review Management
+          </div>
+          <div class="col-12 nav-item dash" routerLink="Reports" routerLinkActive="la">
+            <span data-feather="users"></span>
+            Download Reports
+          </div>
+          <div class="col-12 nav-item dash" routerLink="Forecast" routerLinkActive="la">
+            <span data-feather="bar-chart-2"></span>
+            Business Forecast
+          </div>
+          <div class="col-12 nav-item dash" routerLink="Settings" routerLinkActive="la">
+            <span data-feather="bar-chart-2"></span>
+            Settings
+          </div>
+          <div class="col-12 nav-item dash" style="text-align: center;">
+            <span data-feather="layers"></span>
+            <button type="button" class="btn btn-light btn-lg w-100"
+                    (click)="authService.logout()">Logout
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </nav>
   </div>
+</div>

@@ -1,6 +1,5 @@
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import {AngularFirestore} from '@angular/fire/firestore';
+import {Component, OnInit} from '@angular/core';
 import 'firebase/storage';
 import * as firebase from 'firebase/app';
 import 'firebase/firestore';
@@ -8,13 +7,16 @@ import 'firebase/firestore';
 @Component({
   selector: 'app-review',
   templateUrl: './review.component.html',
-  styleUrls: ['./review.component.css']
+  styleUrls: ['./review.component.css'],
 })
 export class ReviewComponent implements OnInit {
 
-  constructor(private afs: AngularFirestore) { }
   currentRate = 3;
   chefs = [];
+
+  constructor(private afs: AngularFirestore) {
+  }
+
   ngOnInit() {
     this.afs.collection('chef').snapshotChanges().subscribe(res => {
       this.chefs = [];
@@ -32,7 +34,12 @@ export class ReviewComponent implements OnInit {
     });
 
 
-  
   }
 
+  getDate() {
+    const d = new Date();
+    const dtf = new Intl.DateTimeFormat('en', {year: 'numeric', month: 'short', day: '2-digit'});
+    const [{value: mo}, , {value: da}, , {value: ye}] = dtf.formatToParts(d);
+    return `Last Update: ${ye}/${mo}/${da}`;
+  }
 }

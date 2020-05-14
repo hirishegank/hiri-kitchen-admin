@@ -1,11 +1,38 @@
-.dash{
-    padding: 20px;
-    cursor: pointer;
-    font-weight: bold;
+.dash {
+  padding: 20px;
+  cursor: pointer;
+  font-weight: bold;
 }
-.dash:hover{
-    text-decoration: none;
+
+.dash:hover {
+  text-decoration: none;
 }
-.dash:active{
-    text-decoration: none;
+
+.dash:active {
+  text-decoration: none;
+}
+
+/*New styles*/
+
+.side-nav-wrapper {
+  /*width: 100%;*/
+  height: 100vh;
+}
+
+.side-nav {
+  width: 100%;
+  height: 100%;
+  background-color: #22B573;
+  color: white;
+  padding-top: 80px;
+}
+
+.profile-avatar-wrapper {
+  /*padding-left: 30px;*/
+  /*margin-left: 40px;*/
+}
+
+.profile-avatar {
+  border: 5px solid white;
+  border-radius: 100%;
 }

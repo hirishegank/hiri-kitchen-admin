@@ -1,143 +1,167 @@
+<div class="container pt-5">
 
+  <h4 class="feature-title">Chef Management</h4>
+  <hr>
 
-<ng-template #content let-modal>
+  <ng-template #content let-modal>
     <div class="modal-header" style="text-align: center;">
-      <h4 class="modal-title" id="modal-basic-title" >Add a new chef</h4>
+      <h4 class="modal-title" id="modal-basic-title">Add a new chef</h4>
     </div>
     <div class="modal-body">
       <form [formGroup]="chefForm">
         <div class="form-group">
           <label for="FirstName">First Name :</label>
-            <input type="text" formControlName="fname" class="form-control" placeholder="First name" id="FirstName" [ngClass]="{ 'is-invalid': submitted && f.fname.errors }" >
-             <div *ngIf="submitted && f.fname.errors" class="invalid-feedback">
-                    <div *ngIf="f.fname.errors.required">First Name is required</div>
-              </div>
+          <input type="text" formControlName="fname" class="form-control" placeholder="First name" id="FirstName"
+                 [ngClass]="{ 'is-invalid': submitted && f.fname.errors }">
+          <div *ngIf="submitted && f.fname.errors" class="invalid-feedback">
+            <div *ngIf="f.fname.errors.required">First Name is required</div>
+          </div>
         </div>
         <div class="form-group">
-            <label for="LastName">Last Name :</label>
-              <input type="text" formControlName="lname" class="form-control" placeholder="Last name" id="FirstName" [ngClass]="{ 'is-invalid': submitted && f.lname.errors }">
-               <div *ngIf="submitted && f.lname.errors" class="invalid-feedback">
-                    <div *ngIf="f.lname.errors.required">Last Name is required</div>
-               </div>
+          <label for="LastName">Last Name :</label>
+          <input type="text" formControlName="lname" class="form-control" placeholder="Last name" id="FirstName"
+                 [ngClass]="{ 'is-invalid': submitted && f.lname.errors }">
+          <div *ngIf="submitted && f.lname.errors" class="invalid-feedback">
+            <div *ngIf="f.lname.errors.required">Last Name is required</div>
           </div>
-          <div class="form-group">
-            <label for="Location">Location :</label>
-              <input type="text" formControlName="location" class="form-control" placeholder="Location" id="FirstName" [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
-               <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
-                    <div *ngIf="f.location.errors.required">Location is required</div>
-              </div>
+        </div>
+        <div class="form-group">
+          <label for="Location">Location :</label>
+          <input type="text" formControlName="location" class="form-control" placeholder="Location" id="FirstName"
+                 [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
+          <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+            <div *ngIf="f.location.errors.required">Location is required</div>
           </div>
-          <div class="form-group">
-            <label for="PhoneNumber">Phone Number :</label>
-              <input type="text" formControlName="PhoneNumber" class="form-control" placeholder="Phone Number" id="PhoneNumber" [ngClass]="{ 'is-invalid': submitted && f.PhoneNumber.errors }" >
-               <div *ngIf="submitted && f.PhoneNumber.errors" class="invalid-feedback">
-                    <div *ngIf="f.PhoneNumber.errors.required">PhoneNumber is required</div>
-              </div>
+        </div>
+        <div class="form-group">
+          <label for="PhoneNumber">Phone Number :</label>
+          <input type="text" formControlName="PhoneNumber" class="form-control" placeholder="Phone Number"
+                 id="PhoneNumber" [ngClass]="{ 'is-invalid': submitted && f.PhoneNumber.errors }">
+          <div *ngIf="submitted && f.PhoneNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.PhoneNumber.errors.required">PhoneNumber is required</div>
           </div>
-          <div class="form-group">
-            <label for="NICNumber">NIC Number :</label>
-              <input type="text" formControlName="NICNumber"  class="form-control" placeholder="NIC Number" id="NICNumber" [ngClass]="{ 'is-invalid': submitted && f.NICNumber.errors }">
-               <div *ngIf="submitted && f.NICNumber.errors" class="invalid-feedback">
-                    <div *ngIf="f.NICNumber.errors.required">NIC is required</div>
-              </div>
+        </div>
+        <div class="form-group">
+          <label for="NICNumber">NIC Number :</label>
+          <input type="text" formControlName="NICNumber" class="form-control" placeholder="NIC Number" id="NICNumber"
+                 [ngClass]="{ 'is-invalid': submitted && f.NICNumber.errors }">
+          <div *ngIf="submitted && f.NICNumber.errors" class="invalid-feedback">
+            <div *ngIf="f.NICNumber.errors.required">NIC is required</div>
           </div>
-          <div class="row">
-              <div class="col">
-                <button type="button" class="btn btn-danger btn-small" style="width: 80%;" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                    <span aria-hidden="true">Cancel</span>
-                  </button>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                    <button type="button" class="btn btn-success btn-small" style="width: 80%;" (click)="onSubmit()">Save</button>
-                  </div>
-              </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button type="button" class="btn btn-danger btn-small" style="width: 80%;" aria-label="Close"
+                    (click)="modal.dismiss('Cross click')">
+              <span aria-hidden="true">Cancel</span>
+            </button>
           </div>
-         
-          
+          <div class="col">
+            <div class="form-group">
+              <button type="button" class="btn btn-success btn-small" style="width: 80%;" (click)="onSubmit()">Save
+              </button>
+            </div>
+          </div>
+        </div>
+
+
       </form>
     </div>
-</ng-template>
-
-
-<ng-template #delete let-modal>
+  </ng-template>
+  <ng-template #delete let-modal>
     <div class="modal-header" style="background-color: #838181;color: #ffffff;">
       <h6 class="modal-title">Attention</h6>
     </div>
     <div class="modal-body">
-        <h6>Do you really want to delete this chef?</h6>
-        <div class="row">
-            <div class="col">
-              <button type="button" class="btn btn-danger btn-small" style="width: 80%;" aria-label="Close" (click)="modal.dismiss('Cross click')">
-                  <span aria-hidden="true">Cancel</span>
-                </button>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                  <button type="button" class="btn btn-success btn-small" style="width: 80%;" (click)="modal.close('Save click')">Delete</button>
-                </div>
-            </div>
+      <h6>Do you really want to delete this chef?</h6>
+      <div class="row">
+        <div class="col">
+          <button type="button" class="btn btn-danger btn-small" style="width: 80%;" aria-label="Close"
+                  (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">Cancel</span>
+          </button>
         </div>
+        <div class="col">
+          <div class="form-group">
+            <button type="button" class="btn btn-success btn-sm" style="width: 80%;"
+                    (click)="modal.close('Save click')">Delete
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    
+
   </ng-template>
 
+  <div>
 
+    <div class="row p-2">
+      <div class="col-auto mr-auto">
+        <h4 style="font-weight: lighter">Manage Cooks</h4>
+      </div>
+      <div class="col-auto">
+        <button class="btn btn-sm btn-success"
+                (click)="open(content)">+ Add Chef
+        </button>
+      </div>
+    </div>
 
+    <hr>
 
-<div class="card" style="width: 100%;height: 100%;padding-top: 20px;">
-    
-        <div class="row">
-            <div class="col">
-                <h4 style="font-family: Product Sans;font-weight: bold;margin-top: 50px;margin-left: 50px;">Manage Cooks</h4>
-            </div>
-            <div class="col" style="text-align: right;padding-right: 100px;">
-                <button class="btn btn-sm btn-success" style="background-color: #22b573;margin-top: 50px;" (click)="open(content)">+ Add Chef</button>
-            </div>
-        
-         
-    </div><br><br>
+    <!-- Chef card-->
+    <div>
+      <div class="row no-gutters">
+        <div class="col-3 p-2" *ngFor="let chef of chefs">
 
+          <div class="card chef">
+            <!-- Delete -->
+            <i class="fas fa-trash-alt"
+               style="color:orangered;padding: 1rem;size: 6ex;cursor: pointer;"
+               (click)="openConfirmationDialog(chef.id)">
+            </i>
 
+            <div class="card-body" style="text-align: center;">
+              <img class="imgchef" src="../../assets/chef1.png" width="92px" height="92px" alt="dp">
+              <div class="card-text" style="font-weight: bold;">
+                {{ chef.name }}
+                <p style="color: #838181;font-size: .9rem;">{{chef.location}}</p>
 
-
-
-
-
-
-    <div style="padding-left: 20px;">
-        <div class="row" style="padding-inline-start: 30;">
-         <hr>   
-        <div class="col" *ngFor="let chef of chefs">
-            <div class="card chef">
-                <i class="fas fa-trash-alt" style="color:red;padding: 10px;size: 5ex;cursor: pointer;" (click)="openConfirmationDialog(chef.id)"></i>
-                <div class="card-body" style="text-align: center;">
-                    <img class="imgchef" src="../../assets/chef1.png"  width="92px" height="92px">
-                        <div class="card-text" style="font-family: Product Sans;font-weight: bold;">
-                            {{ chef.name }}
-                        <p style="color: #838181;font-size: 10px;">{{chef.location}}</p>
-            
-                        <div class="row">
-                            <div class="col">
-                                <p style="font-size: 10px;">Total orders</p><hr>
-                                <p>{{chef.orders}}</p>
-                            </div>
-                            <div class="col">
-                                <p style="font-size: 10px;">Active Months</p><hr>
-                                <p>02</p>
-                            </div>
-                        </div>
+                <div class="row">
+                  <div class="col-6">
+                    <div class="row no-gutters">
+                      <div class="col-12">
+                        <h6>Total orders</h6>
+                      </div>
+                      <div class="col-12">
+                        <hr>
+                      </div>
+                      <div class="col-12">
+                        <p>{{chef.orders}}</p>
+                      </div>
                     </div>
+                  </div>
+                  <div class="col-6">
+                    <div class="row no-gutters">
+                      <div class="col-12">
+                        <h6>Active Months</h6>
+                      </div>
+                      <div class="col-12">
+                        <hr>
+                      </div>
+                      <div class="col-12">
+                        <p>02</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-            
-            
-        </div>
-        
+      </div>
+    </div>
 
-    </div> 
-        
+  </div>
+
 </div>
-
 

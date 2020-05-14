@@ -1,45 +1,56 @@
-<div class="row" style="padding-top: 50px;padding-bottom: 50px;">
-    <div class="col">
-        <h4>Chef List</h4>
+<div class="container pt-5">
+
+  <h4 class="feature-title">Download Reports</h4>
+  <hr>
+
+  <div class="row">
+    <div class="col-auto mr-auto">
+      <h4 style="font-weight: lighter" class="feature-title">Chef List</h4>
     </div>
-    <div class="col" style="padding-left:600px ;">
-        <input type="text" class="form-control" placeholder="Search for Chef" style="border: 1.5px solid #22B573;width: 300px;">
+    <div class="col-auto">
+      <label>
+        <input type="text" class="form-control" placeholder="Search for Chef"
+               style="border: .1rem solid #22B573; width: 300px;">
+      </label>
     </div>
-</div>
-<hr>
-<div class="container" *ngFor="let chef of chefs">
-    <div class="jumbotron report-avatar" style="padding-top: 20px;border: 1px solid #22B573;">
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    <div class="col-md-2">
-                        <img src="{{chef.Img}}" alt="" style="border: 2px solid gray;border-radius: 500px;width: 50px;height: 50px;">
-                    </div>
-                    <div class="col-md-10">
-                        <h5 style="color: grey;">{{chef.name}}</h5>
-                    </div>
-                </div>
-               
+  </div>
+
+  <hr>
+  <div class="container" *ngFor="let chef of chefs">
+    <div class="jumbotron report-avatar"
+         style="padding-top: 20px;border: 1px solid #22B573; width: 100%">
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div class="col-md-2">
+              <img src="{{chef.Img}}" alt=""
+                   style="border: 2px solid gray;border-radius: 500px;width: 50px;height: 50px;">
             </div>
-            <div class="col" style="align-content: flex-end;text-align: right;">
-                <a [routerLink]="['generation',chef.id]"><button type="submit" class="btn btn-small btn-success" style="background-color: #22b573;">Download Report</button></a>
+            <div class="col-md-10">
+              <h5 style="color: grey;">{{chef.name}}</h5>
             </div>
+          </div>
+
         </div>
-        
-    </div>
-
-   
-
-</div>
-<div class="row" style="text-align: right;">
-    <div class="col">
-
-    </div>
-    <div class="col">
+        <div class="col" style="align-content: flex-end;text-align: right;">
+          <a [routerLink]="['generation',chef.id]">
+            <button type="submit" class="btn btn-small btn-success" style="background-color: #22b573;">Download Report
+            </button>
+          </a>
+        </div>
+      </div>
 
     </div>
-    <div class="col" style="padding-right: 100px;">
-        <button type="submit" class="btn btn-small btn-success" style="background-color: gray;border: none;">Download All Report</button>
+
+
+  </div>
+  <div class="row">
+    <div class="col-4 offset-8">
+      <button type="submit" class="btn btn-small btn-success w-100"
+              style="background-color: gray;border: none;">Download All
+        Report
+      </button>
     </div>
-    
+
+  </div>
 </div>
